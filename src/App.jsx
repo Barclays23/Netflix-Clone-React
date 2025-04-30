@@ -11,6 +11,7 @@ import RedirectIfAuth from './components/RedirectIfAuth'
 
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import Footer from './components/footer'
 
 
 
@@ -19,7 +20,7 @@ function App() {
       <>
          <AuthContextProvider>
             <ToastContainer position="top-center" theme="dark" autoClose={3000} />
-            <Navbar/>
+            <Navbar />
             <Routes>
                <Route path='/' element={<Home/>}>  </Route>
                {/* <Route path='/login' element={<Login/>}>  </Route> */}
@@ -28,6 +29,7 @@ function App() {
                <Route path='/register' element={<RedirectIfAuth> <SignUp /> </RedirectIfAuth> }>  </Route>
                <Route path='/profile' element={ <ProtectedRoute> <Profile/> </ProtectedRoute>}>  </Route>
             </Routes>
+            <Footer />
          </AuthContextProvider>
       </>
    );
