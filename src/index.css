@@ -1,0 +1,52 @@
+/* https://tailwindcss.com/docs/installation/using-vite */
+/* USE THIS LINK TO SET UP TAILWIND CSS STYLE TO THE PROJECT */
+
+
+@import "tailwindcss";
+
+
+
+
+@font-face {
+  font-family: 'Netflix Sans Regular';
+  font-weight: 400;
+  src: url('./assets/fonts/NetflixSans-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Netflix Sans Medium';
+  font-weight: 500;
+  src: url('./assets/fonts/NetflixSans-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Netflix Sans Light';
+  font-weight: 300;
+  src: url('./assets/fonts/NetflixSans-Light.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Netflix Sans Bold';
+  font-weight: 700;
+  src: url('./assets/fonts/NetflixSans-Bold.woff2') format('woff2');
+}
+
+
+
+
+body {
+  font-family: 'Netflix Sans Regular', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  margin: 0;
+  background-color: black;
+  color: white;
+}
+
+
+/* Force-hide scrollbar */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE/Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none !important;  /* Chrome/Safari */
+}
