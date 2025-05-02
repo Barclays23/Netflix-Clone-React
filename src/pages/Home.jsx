@@ -11,10 +11,10 @@ import { endPoints } from '../services/movieServices'
 function Home() {
    return (
       <>
-         <div className='relative'>
+         {/* <div className='relative'>
             <Hero2 className='absolute' ></Hero2>
             <Hero className='absolute' ></Hero>
-         </div>
+         </div> */}
          <Hero className='absolute' ></Hero>
          <MovieRow category='popular' url={endPoints.popular}></MovieRow>
          <MovieRow category='trending' url={endPoints.trending}></MovieRow>
