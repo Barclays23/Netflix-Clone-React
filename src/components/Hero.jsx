@@ -65,11 +65,26 @@ function Hero() {
                         <h1 className='text-3xl md:text-6xl font-bold'>{title}</h1>
                         <div className='mt-8 mb-4'>
                             <button onClick={setupTrailer}
-                                className='capitalize border border-gray-300 bg-gray-400 text-black px-5 py-2 mr-4
-                                hover:bg-red-600 hover:border-red-500 hover:text-white cursor-pointer'>
+                                className='capitalize border px-5 py-2 mr-4 cursor-pointer
+                                bg-gray-950
+                                text-red-300
+                                hover:text-red-400
+                                border-red-400
+                                hover:bg-black
+                                hover:border-red-500
+                                hover:shadow-sm hover:shadow-red-500'>
                                 Play
                             </button>
-                            <button className='capitalize border border-gray-300 px-5 py-2'>Watch Later</button>
+                            <button 
+                                className='capitalize px-5 py-2 cursor-pointer
+                                border border-gray-500 
+                                hover:border-gray-300
+                                text-gray-400
+                                hover:text-gray-300
+                                hover:bg-black
+                                hover:shadow-sm hover:shadow-gray-300'>
+                                Watch Later
+                            </button>
                         </div>
                         <p className='text-gray-400 text-sm'>{release_date}</p>
                         <p className='w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[45%] text-gray-200'>{truncateText(overview, 200)}</p>
