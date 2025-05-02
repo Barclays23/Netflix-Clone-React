@@ -1,4 +1,4 @@
-const tmdbKey = import.meta.env.VITE_TMDB_KEY;
+export const tmdbKey = import.meta.env.VITE_TMDB_KEY;
 
 // APIUrl
 export const baseUrl = "https://api.themoviedb.org/3";
