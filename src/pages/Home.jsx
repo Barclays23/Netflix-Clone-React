@@ -15,7 +15,7 @@ function Home() {
             <Hero2 className='absolute' ></Hero2>
             <Hero className='absolute' ></Hero>
          </div> */}
-         <Hero className='absolute' ></Hero>
+         <Hero></Hero>
          <MovieRow category='popular' url={endPoints.popular}></MovieRow>
          <MovieRow category='trending' url={endPoints.trending}></MovieRow>
          <MovieRow category='top rated' url={endPoints.topRated}></MovieRow>
