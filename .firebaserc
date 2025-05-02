@@ -1,8 +1,5 @@
 {
   "projects": {
-    "default": "react-myflix-23",
-    "dist": "react-myflix-23"
-  },
-  "targets": {},
-  "etags": {}
+    "default": "myflix-movies-23"
+  }
 }

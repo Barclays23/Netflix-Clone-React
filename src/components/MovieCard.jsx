@@ -51,7 +51,9 @@ function MovieCard({movie}) {
     }
 
     return (
-        <div className='movie-card relative w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block rounded-lg overflow-hidden cursor-pointer m-2'>
+        <div 
+            className='movie-card relative w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block rounded-lg overflow-hidden cursor-pointer m-2'
+            onClick={playTrailer}>
             <img 
                 className='w-full h-40 block object-cover object-top'
                 src={createImageUrl('w500', backdrop_path ?? poster_path)} 
