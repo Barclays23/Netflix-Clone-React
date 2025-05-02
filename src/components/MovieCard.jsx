@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { createImageUrl } from '../services/movieServices'
-import { FaHeart, FaRegHeart } from 'react-icons/fa'
+import { FaHeart, FaPlay, FaRegHeart } from 'react-icons/fa'
 import { arrayRemove, arrayUnion, doc, updateDoc } from 'firebase/firestore'
 import { db } from '../services/firebase'
 import { userAuth } from '../context/AuthContext'
 
 import { toast } from 'react-toastify'
 import MovieTrailer from './MovieTrailer'
+import { CiPlay1 } from 'react-icons/ci'
 
 
 
@@ -20,7 +21,9 @@ function MovieCard({movie}) {
 
 
     
-    const markFavouriteMovies =async ()=>{
+    const markFavouriteMovies = async (e)=>{
+        e.stopPropagation();
+
         const userEmail = user && user.email ? user.email : '';
         // console.log('userEmail for markFavouriteMovies :', userEmail)
 
@@ -68,25 +71,33 @@ function MovieCard({movie}) {
     return (
         <>
             <div 
-                className='movie-card relative w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block rounded-lg overflow-hidden cursor-pointer m-2'
-                onClick={setupTrailer}>
+                onClick={setupTrailer}
+                className='movie-card relative w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block rounded-lg overflow-hidden cursor-pointer m-2'>
+                
                 <img 
                     className='w-full h-40 block object-cover object-top'
                     src={createImageUrl('w500', backdrop_path ?? poster_path)} 
                     alt={movie.title}
                 />
+
                 <div className='absolute top-0 left-0 w-full h-40 bg-black/80 opacity-0 hover:opacity-100'>
-                    <p className='whitespace-normal text-xs md:text-sm flex justify-center items-center h-full font-bold'>
-                        {title}
-                    </p>
-                    <p onClick={markFavouriteMovies}>
+
+                    <div className='relative w-full h-full flex flex-col justify-center items-center'>
+                        <CiPlay1 className='text-5xl text-white opacity-80 mb-1 hover:text-red-600' />
+                        <p className='text-xs md:text-sm font-bold text-center whitespace-normal'>
+                            {title}
+                        </p>
+                    </div>
+
+                    <p className='fav-heart-icons' onClick={(e)=> markFavouriteMovies(e)}>
                         {like ? 
-                            (<FaHeart size={20} className='absolute top-2 left-2 text-gray-300' />) 
+                            (<FaHeart size={20} className='absolute top-2 left-2 text-gray-300 hover:text-red-600' />) 
                             : 
-                            (<FaRegHeart size={20} className='absolute top-2 left-2 text-gray-300' />)
+                            (<FaRegHeart size={20} className='absolute top-2 left-2 text-gray-300 hover:text-red-600' />)
                         }
                     </p>
                 </div>
+
             </div>
 
             {showTrailer && <MovieTrailer movieId={movie.id} closeTrailer={() => setShowTrailer(false)} />}
