@@ -3,7 +3,7 @@ import { signUpPageBGUrl } from '../services/movieServices';
 
 
 
-function Hero2() {
+function Hero2 () {
     return (
         <>
             <div className='hero-2'>
