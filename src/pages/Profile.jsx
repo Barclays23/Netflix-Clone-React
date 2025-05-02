@@ -57,12 +57,12 @@ function Profile() {
          <div>
             <div>
                <img 
-                  className='block w-full h-[500px] object-cover'
+                  className='block w-full h-[550px] object-cover'
                   src={signUpPageBGUrl} 
                   alt="Profile-Banner-Image"
                />
 
-               <div className='backdrop bg-black/60 absolute top-0 left-0 w-full h-[500px]'></div>
+               <div className='backdrop bg-black/60 absolute top-0 left-0 w-full h-[550px]'></div>
 
                <div className='absolute top-[20%] p-4 md:p-8'>
                   <h1 className='text-3xl md:text-4xl font-bold mt-20'> My Profile </h1>

@@ -64,14 +64,16 @@ function FavMovieCard({movie}) {
 
                 <div className='absolute top-0 left-0 w-full h-40 bg-black/80 opacity-0 hover:opacity-100'>
                     <div className='relative w-full h-full flex flex-col justify-center items-center'>
-                        <CiPlay1 className='text-5xl text-white opacity-80 mb-1 hover:text-red-600' />
-                        <p className='text-xs md:text-sm font-bold text-center whitespace-normal'>
-                            {title}
-                        </p>
+                        <CiPlay1 className='text-5xl opacity-80 mb-1
+                        text-gray-400
+                        hover:text-red-400
+                        hover:scale-120 duration-1000' />
+
+                        <p className='text-gray-300 text-xs md:text-sm font-bold text-center whitespace-normal'>{title}</p>
                     </div>
 
                     <p onClick={(e)=> removeFromFavourites()}>
-                        <FaTimes className='remove-icon absolute top-1 right-1 text-gray-300' size={20} />
+                        <FaTimes className='remove-icon absolute top-1 right-1 text-gray-400 hover:text-gray-300 hover:scale-120 duration-500' size={20} />
                     </p>
                 </div>
             </div>

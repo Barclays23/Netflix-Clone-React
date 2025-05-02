@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { createImageUrl, endPoints } from '../services/movieServices'
+import { createImageUrl, endPoints, signUpPageBGUrl } from '../services/movieServices'
 import { userAuth } from '../context/AuthContext'
 import { toast } from 'react-toastify'
 import MovieTrailer from './MovieTrailer'
@@ -51,8 +51,8 @@ function Hero() {
     }
 
     return (
-        <>   
-            <div className='w-full h-[550px] lg:h-[650px]'>
+        <> 
+            <div className='hero-1 w-full h-[550px] lg:h-[650px]'>
                 <div className='h-full w-full'>
                     <div className='black-backdrop1 absolute w-full h-[550px] lg:h-[650px] bg-gradient-to-t from-black' />
                     <div className='black-backdrop2 absolute w-full h-[550px] lg:h-[650px] bg-gradient-to-r from-black' />
@@ -62,7 +62,7 @@ function Hero() {
                         alt="Hero_Movie_Image"
                     />
                     <div className='absolute w-full top-[55%] lg:top-[65%] p-4 md:p-8'>
-                        <h1 className='text-3xl md:text-6xl font-bold'>{title}</h1>
+                        <h1 className='hero-movie-title text-3xl md:text-6xl font-bold'>{title}</h1>
                         <div className='mt-8 mb-4'>
                             <button onClick={setupTrailer}
                                 className='capitalize border px-5 py-2 mr-4 cursor-pointer

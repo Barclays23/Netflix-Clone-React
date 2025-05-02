@@ -17,11 +17,10 @@ function Navbar() {
    
 
    return (
-      <div className='navbar-container absolute w-full p-4 flex items-center justify-between z-50'>
+      <div className='navbar-container fixed w-full p-4 flex items-center justify-between z-50 bg-gradient-to-b from-black'>
          <div className='netflix-logo'>
             <Link to={'/'}> <h1 className='uppercase text-red-600 cursor-pointer text-5xl font-bold'>MyFlix</h1> </Link>
          </div>
-
 
          {user && user.email ? (
             <div>
