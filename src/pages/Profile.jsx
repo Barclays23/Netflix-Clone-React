@@ -75,26 +75,13 @@ function Profile() {
          <h2 className='capitalize p-4 md:text-xl font-bold'> My Favourites </h2>
 
          <div className='movie-row relative flex items-center group'>
-            {/* <MdChevronLeft 
-               onClick={slideLeft}
-               className='bg-white rounded-full absolute left-2 opacity-80 text-gray-700 hidden z-10 group-hover:block cursor-pointer'
-               size={50}
-            /> */}
-
             <div
                ref={sliderRef}
-               // className='movie-card w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide'>
                className='movie-card w-full h-full mx-9'>
                {movies.map((movie)=>(
                   <FavMovieCard key={movie.id} movie={movie}></FavMovieCard>
                ))}
             </div>
-
-            {/* <MdChevronRight 
-               onClick={slideRight}
-               className='bg-white rounded-full absolute right-2 opacity-80 text-gray-700 hidden z-10 group-hover:block cursor-pointer'
-               size={50}
-            /> */}
          </div>
       </>
    )

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { createImageUrl } from '../services/movieServices'
 import { FaHeart, FaPlay, FaRegHeart } from 'react-icons/fa'
 import { arrayRemove, arrayUnion, doc, updateDoc } from 'firebase/firestore'
@@ -11,13 +11,21 @@ import { CiPlay1 } from 'react-icons/ci'
 
 
 
-function MovieCard({movie}) {
+function MovieCard({movie, favouriteMovies}) {
     const {title, backdrop_path, poster_path} = movie
     const [like, setLike] = useState(false)
     const [showTrailer, setShowTrailer] = useState(false)
 
 
     const {user} = userAuth()
+
+    // checking is the movies already in favourites list.
+    useEffect(() => {
+        if (favouriteMovies && favouriteMovies.length > 0) {
+            const isFav = favouriteMovies.some(fav => fav.id === movie.id)
+            setLike(isFav)
+        }
+    }, [favouriteMovies, movie.id])
 
 
     

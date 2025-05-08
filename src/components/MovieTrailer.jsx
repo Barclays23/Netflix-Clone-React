@@ -50,7 +50,7 @@ function MovieTrailer({ movieId, closeTrailer }) {
             {trailerKey && (
                 <div className="fixed inset-0 p-10  bg-gray-950/90 flex justify-center items-center z-30">
                     <div className="relative w-[70%] h-[90%] pointer-events-auto">
-                        <button onClick={closeTrailer} className="absolute top-2 right-2 text-white text-xl p-2 cursor-pointer z-100 "> ✖ </button>
+                        <button onClick={closeTrailer} className="absolute top-2 right-2 text-white text-xl p-2 cursor-pointer "> ✖ </button>
                         <iframe
                             width="100%"
                             height="100%"

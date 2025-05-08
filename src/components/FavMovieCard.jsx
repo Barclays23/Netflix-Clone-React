@@ -72,7 +72,7 @@ function FavMovieCard({movie}) {
                         <p className='text-gray-300 text-xs md:text-sm font-bold text-center whitespace-normal'>{title}</p>
                     </div>
 
-                    <p onClick={(e)=> removeFromFavourites()}>
+                    <p onClick={(e)=> removeFromFavourites(e)}>
                         <FaTimes className='remove-icon absolute top-1 right-1 text-gray-400 hover:text-gray-300 hover:scale-120 duration-500' size={20} />
                     </p>
                 </div>
