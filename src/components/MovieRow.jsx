@@ -2,23 +2,20 @@ import axios from 'axios'
 import React, { useEffect, useRef, useState } from 'react'
 import MovieCard from './MovieCard'
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md'
-
-
 import { doc, getDoc } from 'firebase/firestore'
 import { db } from '../services/firebase'
 import { userAuth } from '../context/AuthContext'
 
-
-
-
-function MovieRow({category, url}) {
+function MovieRow({ category, url }) {
     const [rowMovies, setRowMovies] = useState([])
-    const sliderRef = useRef(0)
+    const sliderRef = useRef(null)
+
 
     const [favouriteMovies, setFavouriteMovies] = useState([])
     const { user } = userAuth()
 
-    // for fetching the favourite movies of user
+
+    // fetch favourite movies
     useEffect(() => {
         const fetchFavourites = async () => {
             if (user && user.email) {
@@ -30,60 +27,61 @@ function MovieRow({category, url}) {
                 }
             }
         }
-
         fetchFavourites()
     }, [user])
 
 
-    // for fetching the all movies of specified category for the movie-row
-    useEffect(()=>{
-        axios.get(url).then((response)=>{
-            // console.log('category :', category, 'results :', response.data.results)
+    // fetch movies of category
+    useEffect(() => {
+        axios.get(url).then((response) => {
             setRowMovies(response.data.results)
         })
     }, [url])
 
-
-    const slideLeft = () => {
-        sliderRef.current.scrollLeft -= 500
-    }
     
-    const slideRight = () => {
-        sliderRef.current.scrollLeft += 500
+    const slideLeft = () => {
+        if (sliderRef.current) {
+            const scrollAmount = window.innerWidth < 768 ? 200 : 500
+            sliderRef.current.scrollLeft -= scrollAmount
+        }
     }
 
+    const slideRight = () => {
+        if (sliderRef.current) {
+            const scrollAmount = window.innerWidth < 768 ? 200 : 500
+            sliderRef.current.scrollLeft += scrollAmount
+        }
+    }
 
     return (
-        <>
-            <h2 className='capitalize p-4 md:text-xl font-bold'>{category}</h2>
-            <div className='movie-row relative flex items-center group'>
-                <MdChevronLeft 
-                    onClick={slideLeft}
-                    className='bg-white rounded-full absolute left-2 opacity-80 text-gray-700 hidden z-10 group-hover:block cursor-pointer'
-                    size={50}
-                />
 
+        <div>        
+            <h2 className='capitalize p-2 text-lg md:text-xl font-bold'>{category}</h2>
+            <div className='movie-row relative flex items-center group'>
+                <MdChevronLeft
+                    onClick={slideLeft}
+                    className='bg-white rounded-full absolute left-1 opacity-80 text-gray-700 hidden group-hover:block cursor-pointer z-10'
+                    size={40}
+                />
                 <div
-                    // id='slider'
                     ref={sliderRef}
-                    className='movie-card w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide'>
-                    {rowMovies.map((movie)=>(
-                        <MovieCard 
+                    className='movie-card w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide touch-pan-x'
+                >
+                    {rowMovies.map((movie) => (
+                        <MovieCard
                             key={movie.id}
                             movie={movie}
                             favouriteMovies={favouriteMovies}
-                            >
-                        </MovieCard>
+                        />
                     ))}
                 </div>
-
-                <MdChevronRight 
+                <MdChevronRight
                     onClick={slideRight}
-                    className='bg-white rounded-full absolute right-2 opacity-80 text-gray-700 hidden z-10 group-hover:block cursor-pointer'
-                    size={50}
+                    className='bg-white rounded-full absolute right-1 opacity-80 text-gray-700 hidden group-hover:block cursor-pointer z-10'
+                    size={40}
                 />
             </div>
-        </>
+        </div>
     )
 }
 

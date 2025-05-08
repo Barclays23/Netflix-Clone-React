@@ -5,6 +5,7 @@ import { db } from '../services/firebase';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import { signUpPageBGUrl } from '../services/movieServices';
 import FavMovieCard from '../components/FavMovieCard';
+import FavMovieCard2 from '../components/FavMovieCard2';
 
 
 
@@ -38,8 +39,7 @@ function Profile() {
       fetchUserData();
 
    }, []);
-   
-   // console.log('movies :', movies);
+
 
 
    const slideLeft = () => {
@@ -52,39 +52,61 @@ function Profile() {
 
 
 
+
+
    return (
       <>
-         <div>
-            <div>
-               <img 
-                  className='block w-full h-[550px] object-cover'
-                  src={signUpPageBGUrl} 
-                  alt="Profile-Banner-Image"
-               />
-
-               <div className='backdrop bg-black/60 absolute top-0 left-0 w-full h-[550px]'></div>
-
-               <div className='absolute top-[20%] p-4 md:p-8'>
-                  <h1 className='text-3xl md:text-4xl font-bold mt-20'> My Profile </h1>
-                  <p className='font-light text-gray-400 text-lg'>{user.email}</p>
-               </div>
-
+         <div className="relative w-full h-[250px] sm:h-[400px] md:h-[450px] lg:h-[550px]">
+            <img 
+               className="block w-full h-[250px] sm:h-[350px] md:h-[450px] lg:h-[550px] object-cover"
+               src={signUpPageBGUrl} 
+               alt="Profile-Banner-Image"
+            />
+      
+            <div className="absolute top-0 left-0 w-full h-full bg-black/60"></div>
+      
+            <div className="absolute top-[25%] sm:top-[30%] md:top-[35%] left-4 sm:left-8">
+               <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-10 sm:mt-16 md:mt-20 text-white">
+               My Profile
+               </h1>
+               <p className="font-light text-gray-300 text-sm sm:text-base md:text-lg break-all">
+               {user.email}
+               </p>
             </div>
          </div>
+   
+         <h2 className="capitalize p-4 text-lg sm:text-xl md:text-2xl font-bold">
+            My Favourites
+         </h2>
 
-         <h2 className='capitalize p-4 md:text-xl font-bold'> My Favourites </h2>
-
-         <div className='movie-row relative flex items-center group'>
+         {/* FAVMOVIECARD WITH FIXED SIZE */}
+         {/* <div className='movie-row relative flex group mx-10'>
             <div
                ref={sliderRef}
-               className='movie-card w-full h-full mx-9'>
+               className='movie-card w-[100%] h-[100%]'>
                {movies.map((movie)=>(
-                  <FavMovieCard key={movie.id} movie={movie}></FavMovieCard>
+                  <FavMovieCard key={movie.id} movie={movie} />
+               ))}
+            </div>
+         </div> */}
+
+
+         {/* COPY: FAVMOVIECARD-2 WITH GRID SIZE */}
+         <div className='movie-row relative mr-7 ml-3'>
+            <div
+               ref={sliderRef}
+               className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-2 w-full'>
+               {movies.map((movie) => (
+                  <FavMovieCard2 key={movie.id} movie={movie} />
                ))}
             </div>
          </div>
+         
       </>
-   )
+   );
+    
+
+
 }
 
 export default Profile

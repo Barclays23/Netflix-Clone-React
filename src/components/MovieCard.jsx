@@ -19,11 +19,12 @@ function MovieCard({movie, favouriteMovies}) {
 
     const {user} = userAuth()
 
+
     // checking is the movies already in favourites list.
     useEffect(() => {
         if (favouriteMovies && favouriteMovies.length > 0) {
             const isFav = favouriteMovies.some(fav => fav.id === movie.id)
-            setLike(isFav)
+            setLike(isFav)  // set as favourite by default.
         }
     }, [favouriteMovies, movie.id])
 

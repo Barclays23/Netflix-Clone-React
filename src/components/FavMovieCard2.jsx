@@ -11,7 +11,7 @@ import { CiPlay1 } from 'react-icons/ci';
 
 
 
-function FavMovieCard({movie}) {
+function FavMovieCard2({movie}) {
     const {title, backdrop_path, poster_path} = movie
 
     const [isRemoved, setIsRemoved] = useState(false);
@@ -54,7 +54,7 @@ function FavMovieCard({movie}) {
     return (
         <>
             <div 
-                className='movie-card relative w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block rounded-lg overflow-hidden cursor-pointer m-2'
+                className='movie-card relative w-full rounded-lg overflow-hidden cursor-pointer m-2'
                 onClick={setupTrailer}>
                 
                 <img 
@@ -83,4 +83,4 @@ function FavMovieCard({movie}) {
     )
 }
 
-export default FavMovieCard
+export default FavMovieCard2

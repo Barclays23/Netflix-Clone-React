@@ -50,6 +50,50 @@ function Hero() {
         )
     }
 
+
+    return (
+        <>
+            <div className='relative w-full h-[500px] md:h-[550px] lg:h-[650px] mb-5'>
+                <div className='absolute w-full h-full bg-gradient-to-t from-black z-10' />
+                <div className='absolute w-full h-full bg-gradient-to-r from-black z-10' />
+                
+                <img
+                    className='w-full h-full object-cover object-top'
+                    src={createImageUrl('original', backdrop_path)}
+                    alt="Hero_Movie_Image"
+                />
+
+                <div className='absolute w-full top-3/4 md:top-[50%] sm:top-[80%] transform -translate-y-1/2 md:-translate-y-0 p-4 sm:p-4 md:p-8 z-20'>
+                    <h1 className='text-lg sm:text-2xl md:text-4xl lg:text-6xl font-bold text-white'>{title}</h1>
+
+                    <div className='mt-3 md:mt-6 mb-3 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4'>
+                        <button
+                            onClick={setupTrailer}
+                            className='self-start sm:self-auto w-fit px-3 py-1 sm:px-5 sm:py-2 capitalize border bg-gray-950 text-red-300 hover:text-red-400 border-red-400 hover:bg-black hover:border-red-500 hover:shadow-sm hover:shadow-red-500 transition duration-200 text-center'
+                        >
+                            Play
+                        </button>
+                        <button
+                            className='self-start sm:self-auto w-fit px-3 py-1 sm:px-5 sm:py-2 capitalize border border-gray-500 hover:border-gray-300 text-gray-400 hover:text-gray-300 hover:bg-black hover:shadow-sm hover:shadow-gray-300 transition duration-200 text-center'
+                        >
+                            Watch Later
+                        </button>
+                    </div>
+
+                    <p className='text-gray-400 text-xs sm:text-sm mb-1'>{release_date}</p>
+                    <p className='text-xs sm:text-sm md:text-base w-full max-w-full sm:max-w-[90%] md:max-w-[70%] lg:max-w-[50%] xl:max-w-[45%] text-gray-200'>
+                        {truncateText(overview, 200)}
+                    </p>
+                </div>
+
+            </div>
+
+            {showTrailer && (
+                <MovieTrailer movieId={heroMovie.id} closeTrailer={() => setShowTrailer(false)} />
+            )}
+        </>
+    )
+
     return (
         <> 
             <div className='hero-1 w-full h-[550px] lg:h-[650px]'>
