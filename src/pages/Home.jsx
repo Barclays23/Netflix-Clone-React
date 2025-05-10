@@ -3,12 +3,29 @@ import Hero from '../components/Hero'
 import Hero2 from '../components/Hero2'
 import MovieRow from '../components/MovieRow'
 import { endPoints } from '../services/movieServices'
+import Spinner1 from '../components/Spinner1'
+import Spinner2 from '../components/Spinner2'
+import { userAuth } from '../context/AuthContext'
 
 
 
 
 
 function Home() {
+
+   const { user, loading: authLoading, logoutLoading} = userAuth()
+
+
+
+   if (authLoading) {
+      return <Spinner1 />;  // showing spinner1 when checking user auth checking
+   }
+
+   if (logoutLoading) {
+      return <Spinner2 />;  // showing spinner1 when logout
+   }
+
+
    return (
       <>
          {/* <div className='relative'>

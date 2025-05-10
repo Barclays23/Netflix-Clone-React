@@ -10,7 +10,8 @@ import {
    signOut,
    browserLocalPersistence,
    browserSessionPersistence,
-   setPersistence
+   setPersistence,
+   sendPasswordResetEmail
 } from "firebase/auth";
 
 
@@ -22,6 +23,8 @@ const AuthContext = createContext();
 export const AuthContextProvider = ({ children }) => {
    const [user, setUser] = useState(null);
    const [loading, setLoading] = useState(true);
+   const [logoutLoading, setLogoutLoading] = useState(false);
+
 
    // Signup function
    const signUp = async (email, password) => {
@@ -40,9 +43,20 @@ export const AuthContextProvider = ({ children }) => {
    
 
    // Logout function
-   const logOut = () => {
-      return signOut(auth)
-   }
+   const logOut = async () => {
+      setLogoutLoading(true);
+      try {
+         await signOut(auth);
+      } catch (error) {
+         console.log(error);
+      } finally {
+         setTimeout(() => {
+            setLogoutLoading(false);
+         }, 1000);      
+      }
+   };
+
+   const resetPassword = (email) => sendPasswordResetEmail(auth, email)
 
 
    useEffect(() => {
@@ -56,9 +70,8 @@ export const AuthContextProvider = ({ children }) => {
    }, []);
 
 
-
    return (
-      <AuthContext.Provider value={{ user, loading, signUp, logIn, logOut }}>
+      <AuthContext.Provider value={{ user, loading, logoutLoading, signUp, logIn, logOut, resetPassword }}>
          {children}
       </AuthContext.Provider>
    );

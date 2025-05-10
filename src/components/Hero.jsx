@@ -69,12 +69,12 @@ function Hero() {
                     <div className='mt-3 md:mt-6 mb-3 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4'>
                         <button
                             onClick={setupTrailer}
-                            className='self-start sm:self-auto w-fit px-3 py-1 sm:px-5 sm:py-2 capitalize border bg-gray-950 text-red-300 hover:text-red-400 border-red-400 hover:bg-black hover:border-red-500 hover:shadow-sm hover:shadow-red-500 transition duration-200 text-center'
+                            className='self-start sm:self-auto w-fit px-3 py-1 sm:px-5 sm:py-2 capitalize border bg-gray-950 text-red-300 hover:text-red-400 border-red-400 hover:bg-black hover:border-red-500 hover:shadow-sm hover:shadow-red-500 transition duration-200 text-center cursor-pointer'
                         >
                             Play
                         </button>
                         <button
-                            className='self-start sm:self-auto w-fit px-3 py-1 sm:px-5 sm:py-2 capitalize border border-gray-500 hover:border-gray-300 text-gray-400 hover:text-gray-300 hover:bg-black hover:shadow-sm hover:shadow-gray-300 transition duration-200 text-center'
+                            className='self-start sm:self-auto w-fit px-3 py-1 sm:px-5 sm:py-2 capitalize border border-gray-500 hover:border-gray-300 text-gray-400 hover:text-gray-300 hover:bg-black hover:shadow-sm hover:shadow-gray-300 transition duration-200 text-center cursor-pointer'
                         >
                             Watch Later
                         </button>

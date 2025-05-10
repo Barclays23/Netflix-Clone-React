@@ -1,14 +1,18 @@
 import React from 'react'
 import { Navigate } from 'react-router-dom'
 import { userAuth } from '../context/AuthContext'
+import Spinner1 from './Spinner1';
+
+
+
+
 
 function RedirectIfAuth({ children }) {
    const { user, loading } = userAuth()
-
-   if (loading) return null;
+   
 
    if (user) {
-      return <Navigate to="/profile" />
+      return <Navigate to="/" />  // redirect to home page after login
    }
 
    return children
