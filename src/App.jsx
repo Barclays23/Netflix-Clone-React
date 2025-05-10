@@ -12,6 +12,7 @@ import RedirectIfAuth from './components/RedirectIfAuth'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Footer from './components/Footer'
+import NotFound404 from './pages/NotFound404'
 
 
 
@@ -31,6 +32,7 @@ function App() {
                <Route path='/login' element={<RedirectIfAuth> <Login /> </RedirectIfAuth> }>  </Route>
                <Route path='/register' element={<RedirectIfAuth> <SignUp /> </RedirectIfAuth> }>  </Route>
                <Route path='/profile' element={ <ProtectedRoute> <Profile/> </ProtectedRoute>}>  </Route>
+               <Route path='*' element={<NotFound404 />} />
             </Routes>
             <Footer />
          </AuthContextProvider>
