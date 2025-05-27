@@ -13,6 +13,7 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Footer from './components/Footer'
 import NotFound404 from './pages/NotFound404'
+// import Review from './pages/Review'
 
 
 

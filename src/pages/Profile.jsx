@@ -30,7 +30,18 @@ function Profile() {
             if (docSnap.exists()) {
                const likedMovies = docSnap.data().likedMovies || []
                // console.log('likedMovies from Firestore:', likedMovies);
-               setMovies(likedMovies)
+
+               // Remove duplicates by movie.id
+               const uniqueMoviesMap = new Map();
+               likedMovies.forEach(movie => {
+                  if (!uniqueMoviesMap.has(movie.id)) {
+                     uniqueMoviesMap.set(movie.id, movie);
+                  }
+               });
+
+               const uniqueMovies = Array.from(uniqueMoviesMap.values());
+
+               setMovies(uniqueMovies);
                
             } else {
                console.log('No such document!');
